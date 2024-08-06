@@ -3,13 +3,24 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- page header -->
     <title>Test Title</title>
+
+    <script src="scripts/downloadImage.js" ></script>
   </head>
   <body>
     <main>
-        <h1>Testing</h1>  
-        <img src="" alt="My test image" />
+        <!-- text on page -->
+        <h1>Testing</h1> 
+
+        <!-- image download button -->
+        <input type="button" id="downloadBtn" value="Download">
+        <script>
+            let download = document.getElementById('downloadBtn')
+            download.addEventListener('click', downloadImage)
+        </script>
     </main>
-    <script src="loadimage.js" ></script>
+    <!-- image displays from this -->
+    <script src="scripts/loadImage.js" ></script>
   </body>
 </html>
