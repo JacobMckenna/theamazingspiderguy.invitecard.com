@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // constants
     // 
     const imageSelect = document.getElementById('backgroundType-select');
+    const textboxSelect = document.getElementById('textbox-select');
     const nameText = document.getElementById('name-text');
     const canvas = document.getElementById('preview-canvas');
     const ctx = canvas.getContext('2d');
@@ -22,32 +23,40 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = "rgb(0, 0, 0)";
         ctx.fillText(text, 10, 10);
     }
-    function loadImage(imageSrc) {
-        const img = new Image();
-        img.src = imageSrc;
-        // anonymous must be set otherwise the file will appear 'tainted' and will not download
-        // thanks to https://stackoverflow.com/questions/22710627/tainted-canvases-may-not-be-exported
-        img.crossOrigin = "anonymous"
+    function loadImage(src) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = "anonymous"; // for CORS issues
+            img.src = src;
 
-        img.onload = () => {
-            // Clear the canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            // Draw the new image
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            console.log(nameText.value)
-            // draw text to canvas
-            drawText(nameText.value)
-        };
+            img.onload = () => resolve(img);
+            img.onerror = reject;
+        });
     }
-    function updateText(text) {
-        // redraw image
-        loadImage(imageSelect.value)
+    function loadImages(bgImageSrc, textboxImageSrc) {
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+        // learned how to use promise
+        Promise.all([loadImage(bgImageSrc), loadImage(textboxImageSrc)])
+            .then(([bgImage, textboxImage]) => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // wait for load then draw text
-        setTimeout(() => {
-            drawText(text)
-        }, 100); // Delay to ensure image is loaded
+                ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);  // background image
+                ctx.drawImage(textboxImage, 0, 0, canvas.width, canvas.height); // textbox image
+                drawText(nameText.value);                               // for name text
+            })
+            .catch(error => {
+                console.error('Error loading images:', error);
+            });
     }
+    // function updateText() {
+    //     // redraw image
+    //     loadImages(imageSelect.value, textboxSelect.value)
+
+    //     // wait for load then draw text
+    //     setTimeout(() => {
+    //         drawText(nameText.value)
+    //     }, 100); // Delay to ensure image is loaded
+    // }
     // function to download the canvas
     function downloadImage() {
         // downloads canvas image from download button
@@ -66,23 +75,26 @@ document.addEventListener('DOMContentLoaded', () => {
         // Click on the link to set off download
         a.click();
     }
+    function updateCanvas() {
+        loadImages(imageSelect.value, textboxSelect.value);
+    }
 
     // 
     // main
     // 
     // Load the first image by default
-    loadImage(imageSelect.value);
+    loadImages(imageSelect.value, textboxSelect.value);
 
     // 
     // event listeners
     // 
     // Change image when a new option is selected
-    imageSelect.addEventListener('change', (event) => {
-        loadImage(event.target.value);
-    });
-    nameText.addEventListener('change', (event) => {
-        updateText(event.target.value);
-    });
+    // imageSelect.addEventListener('change', (event) => {
+    //     updateCanvas();
+    // });
+    imageSelect.addEventListener('change', updateCanvas);
+    textboxSelect.addEventListener('change', updateCanvas);
+    nameText.addEventListener('input', updateCanvas);
     // start download when download button is clicked
     downloadBtn.addEventListener('click', () => {
         downloadImage();
