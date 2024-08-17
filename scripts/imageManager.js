@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // constants
     // 
     const imageSelect = document.getElementById('backgroundType-select');
+    const nameText = document.getElementById('name-text');
     const canvas = document.getElementById('preview-canvas');
     const ctx = canvas.getContext('2d');
     const downloadBtn = document.getElementById('downloadBtn')
@@ -15,6 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Functions
     // 
     // Function to load and draw the selected image
+    function drawText(text) {
+        // draw text to canvas
+        ctx.font = "bold 20px Arial";
+        ctx.fillStyle = "rgb(0, 0, 0)";
+        ctx.fillText(text, 10, 10);
+    }
     function loadImage(imageSrc) {
         const img = new Image();
         img.src = imageSrc;
@@ -27,12 +34,19 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             // Draw the new image
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
+            console.log(nameText.value)
             // draw text to canvas
-            ctx.font = "bold 20px Arial";
-            ctx.fillStyle = "rgb(0, 0, 0)";
-            ctx.fillText("Spiderman!", 10, 10);
+            drawText(nameText.value)
         };
+    }
+    function updateText(text) {
+        // redraw image
+        loadImage(imageSelect.value)
+
+        // wait for load then draw text
+        setTimeout(() => {
+            drawText(text)
+        }, 100); // Delay to ensure image is loaded
     }
     // function to download the canvas
     function downloadImage() {
@@ -65,6 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Change image when a new option is selected
     imageSelect.addEventListener('change', (event) => {
         loadImage(event.target.value);
+    });
+    nameText.addEventListener('change', (event) => {
+        updateText(event.target.value);
     });
     // start download when download button is clicked
     downloadBtn.addEventListener('click', () => {

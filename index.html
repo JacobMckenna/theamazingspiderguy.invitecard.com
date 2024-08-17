@@ -17,15 +17,23 @@
         
 
       <!-- change background -->
-      <div>
-        <form>
-          <label for="backgroundType-select">Select your background:</label><br>
-          <select name="backgroundType" id="backgroundType-select" onchange='updateImage()'>
-          <option value='https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/spiderman_background.jpg' selected>Spider-Man</option>
-          <option value='https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/gwen_background.jpg'>Gwen</option>
-          <option value='https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/miles_background.jpg'>Miles</option>
-          </select>
-        </form>
+      <div id="inputs">
+
+        <div id="backgroundType">
+          <form>
+            <label for="backgroundType-select">Select your background:</label><br>
+            <select id="backgroundType-select">
+            <option value='https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/spiderman_background.jpg' selected>Spider-Man</option>
+            <option value='https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/gwen_background.jpg'>Gwen</option>
+            <option value='https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/miles_background.jpg'>Miles</option>
+            </select>
+          </form>
+        </div>
+
+        <div id="name">
+          <label for="name-text">Enter your name:</label><br>
+          <input type="text" id="name-text" placeholder="birthday person's name" />
+        </div>
         <br>
       </div>
 
