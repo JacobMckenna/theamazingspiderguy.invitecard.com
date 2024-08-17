@@ -3,11 +3,17 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 
+    // constants
+    // 
     const imageSelect = document.getElementById('backgroundType-select');
     const canvas = document.getElementById('preview-canvas');
     const ctx = canvas.getContext('2d');
     const downloadBtn = document.getElementById('downloadBtn')
 
+    // 
+    // Functions
+    // 
     // Function to load and draw the selected image
     function loadImage(imageSrc) {
         const img = new Image();
@@ -47,9 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
         a.click();
     }
 
+    // 
+    // main
+    // 
     // Load the first image by default
     loadImage(imageSelect.value);
 
+    // 
+    // event listeners
+    // 
     // Change image when a new option is selected
     imageSelect.addEventListener('change', (event) => {
         loadImage(event.target.value);
