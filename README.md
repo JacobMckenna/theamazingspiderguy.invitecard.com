@@ -4,7 +4,7 @@ Source code for a downloadable invite card for theamazingspiderguy.com
 
 ## Future additions
 
-- Customizable background image
+- automatically update the name as it's field is being filled in
 - css styling
 - customizable text
   - centered over background image line for birthday kid name
