@@ -8,7 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 
     const imageSelect = document.getElementById('backgroundType-select');
     const textboxSelect = document.getElementById('textbox-select');
+
     const nameText = document.getElementById('name-text');
+    const contactText = document.getElementById('contact-text');
+    const whereText = document.getElementById('where-text');
+    const whenText = document.getElementById('when-text');
+
     const canvas = document.getElementById('preview-canvas');
     const ctx = canvas.getContext('2d');
     const downloadBtn = document.getElementById('downloadBtn')
@@ -17,11 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Functions
     // 
     // Function to load and draw the selected image
-    function drawText(text) {
+    function drawText(text, x, y) {
         // draw text to canvas
         ctx.font = "bold 20px Arial";
         ctx.fillStyle = "rgb(0, 0, 0)";
-        ctx.fillText(text, 10, 10);
+        ctx.fillText(text, x, y);
     }
     function loadImage(src) {
         return new Promise((resolve, reject) => {
@@ -42,11 +47,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);  // background image
                 ctx.drawImage(textboxImage, 0, 0, canvas.width, canvas.height); // textbox image
-                drawText(nameText.value);                               // for name text
+                drawText(nameText.value, 10, 10);                               // for name text
+                drawText(contactText.value, 10, 30);                               // for contact text
+                drawText(whereText.value, 10, 50);                               // for where text
+                drawText(getWhenString(whenText.value), 10, 70);                               // for when text
             })
             .catch(error => {
                 console.error('Error loading images:', error);
             });
+    }
+    function getWhenString(value) {
+        // if value is less than 0, use empty string
+        if (value.length <= 0) {
+            return "None"
+        } // all else use toDateString
+        return new Date(value).toDateString();  // format eg: Tue Aug 20 2024
     }
     // function updateText() {
     //     // redraw image
@@ -95,6 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
     imageSelect.addEventListener('change', updateCanvas);
     textboxSelect.addEventListener('change', updateCanvas);
     nameText.addEventListener('input', updateCanvas);
+    contactText.addEventListener('input', updateCanvas);
+    whereText.addEventListener('input', updateCanvas);
+    whenText.addEventListener('input', updateCanvas);
     // start download when download button is clicked
     downloadBtn.addEventListener('click', () => {
         downloadImage();
