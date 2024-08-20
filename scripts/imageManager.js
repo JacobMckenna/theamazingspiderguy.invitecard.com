@@ -1,4 +1,37 @@
 
+// **
+// ** links to images are stored here
+// **
+let backgroundImages = {    // from background image name to image src link
+    "Spider-Man": "https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/spiderman_background.jpg",
+    "Gwen": "https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/gwen_background.jpg",
+    "Miles": "https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/miles_background.jpg"
+}
+
+let textboxImages = {   // from textbox image name to image src link
+    "Basic": "https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/invite_textbox.png"
+}
+let textboxPositions = {    // from textbox image name to xy positions for the important text
+    "Basic": {
+        "name-text": {
+            "x": 10,
+            "y": 20
+        },
+        "contact-text": {
+            "x": 10,
+            "y": 40
+        },
+        "where-text": {
+            "x": 10,
+            "y": 60
+        },
+        "when-text": {
+            "x": 10,
+            "y": 80
+        }
+    }
+}
+
 
 
 
@@ -47,10 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);  // background image
                 ctx.drawImage(textboxImage, 0, 0, canvas.width, canvas.height); // textbox image
-                drawText(nameText.value, 10, 10);                               // for name text
-                drawText(contactText.value, 10, 30);                               // for contact text
-                drawText(whereText.value, 10, 50);                               // for where text
-                drawText(getWhenString(whenText.value), 10, 70);                               // for when text
+                drawText(nameText.value, 
+                    textboxPositions[textboxSelect.value]["name-text"]["x"], 
+                    textboxPositions[textboxSelect.value]["name-text"]["y"]);       // for name text
+                drawText(contactText.value, 
+                    textboxPositions[textboxSelect.value]["contact-text"]["x"], 
+                    textboxPositions[textboxSelect.value]["contact-text"]["y"]);       // for contact text
+                drawText(whereText.value, 
+                    textboxPositions[textboxSelect.value]["where-text"]["x"], 
+                    textboxPositions[textboxSelect.value]["where-text"]["y"]);         // for where text
+                drawText(getWhenString(whenText.value), 
+                    textboxPositions[textboxSelect.value]["when-text"]["x"], 
+                    textboxPositions[textboxSelect.value]["when-text"]["y"]);      // for when text
             })
             .catch(error => {
                 console.error('Error loading images:', error);
@@ -91,14 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
         a.click();
     }
     function updateCanvas() {
-        loadImages(imageSelect.value, textboxSelect.value);
+        loadImages(backgroundImages[imageSelect.value], textboxImages[textboxSelect.value]);
     }
 
     // 
     // main
     // 
     // Load the first image by default
-    loadImages(imageSelect.value, textboxSelect.value);
+    updateCanvas()
 
     // 
     // event listeners
