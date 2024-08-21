@@ -12,7 +12,8 @@ let backgroundImages = {
 let textboxImages = {
 	// from textbox image name to image src link
 	Basic: "https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/basic_textbox.png",
-	Compact: "https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/compact_textbox.png",
+	Compact:
+		"https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/compact_textbox.png",
 };
 let textboxPositions = {
 	// from textbox image name to xy positions for the important text
@@ -163,7 +164,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		// Set the link to the image so that when clicked, the image begins downloading
 		a.href = dataURL;
 		// Specify the image filename
-		a.download = nameText.value+"_invitation_card.jpeg";
+		a.download =	// Spiderman-invite-card-(birthday name here)
+			imageSelect.value + "-invitation-card-" + nameText.value + ".jpeg";
+
 		// Click on the link to set off download
 		a.click();
 	}
