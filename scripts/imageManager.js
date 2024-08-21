@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		// Set the link to the image so that when clicked, the image begins downloading
 		a.href = dataURL;
 		// Specify the image filename
-		a.download = "canvas-download.jpeg";
+		a.download = nameText.value+"_invitation_card.jpeg";
 		// Click on the link to set off download
 		a.click();
 	}
