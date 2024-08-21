@@ -34,6 +34,24 @@ let textboxPositions = {
 			y: 907,
 		},
 	},
+	Compact: {
+		"name-text": {
+			x: 404,
+			y: 868,
+		},
+		"contact-text": {
+			x: 291,
+			y: 1079,
+		},
+		"where-text": {
+			x: 320,
+			y: 911,
+		},
+		"when-text": {
+			x: 287,
+			y: 993,
+		},
+	},
 };
 
 document.addEventListener("DOMContentLoaded", () => {
