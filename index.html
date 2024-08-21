@@ -1,95 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- page header -->
-    <title>The Amazing Spider-Guy Birthday Invitation Card Creator</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- page header -->
+		<title>The Amazing Spider-Guy Birthday Invitation Card Creator</title>
 
-    <script src="scripts/imageManager.js"></script>
-  </head>
-  <body>
-    <main>
-      <!-- text on page -->
-      <div>
-        <h1>Spider-Man Birthday Invitation Card</h1>
-      </div>
+		<script src="scripts/imageManager.js"></script>
+	</head>
+	<body>
+		<main>
+			<!-- text on page -->
+			<div>
+				<h1>Spider-Man Birthday Invitation Card</h1>
+			</div>
 
-      <!-- change background -->
-      <div id="inputs">
-        <div id="backgroundType">
-          <form>
-            <label for="backgroundType-select">Select your background:</label
-            ><br />
-            <select id="backgroundType-select">
-              <!-- sends values to a dictionary for the corresponding link in imageManager.js -->
-              <option value="Spider-Man" selected>Spider-Man</option>
-              <option value="Gwen">Gwen</option>
-              <option value="Miles">Miles</option>
-            </select>
-          </form>
-        </div>
+			<!-- change background -->
+			<div id="inputs">
+				<div id="backgroundType">
+					<form>
+						<label for="backgroundType-select"
+							>Select your background:</label
+						><br />
+						<select id="backgroundType-select">
+							<!-- sends values to a dictionary for the corresponding link in imageManager.js -->
+							<option value="Spider-Man" selected>
+								Spider-Man
+							</option>
+							<option value="Gwen">Gwen</option>
+							<option value="Miles">Miles</option>
+						</select>
+					</form>
+				</div>
 
-        <div id="textboxType">
-          <form>
-            <label for="textbox-select">Select your textbox:</label><br />
-            <select id="textbox-select">
-              <!-- sends values to a dictionary for the corresponding link in imageManager.js -->
-              <option value="Basic" selected>Basic</option>
-            </select>
-          </form>
-        </div>
+				<div id="textboxType">
+					<form>
+						<label for="textbox-select">Select your textbox:</label
+						><br />
+						<select id="textbox-select">
+							<!-- sends values to a dictionary for the corresponding link in imageManager.js -->
+							<option value="Basic" selected>Basic</option>
+						</select>
+					</form>
+				</div>
 
-        <div id="name">
-          <label for="name-text">Enter your name:</label><br />
-          <input type="text" id="name-text" placeholder="eg. Timothy" />
-        </div>
+				<div id="name">
+					<label for="name-text">Enter your name:</label><br />
+					<input
+						type="text"
+						id="name-text"
+						placeholder="eg. Timothy"
+					/>
+				</div>
 
-        <div>
-          <label for="contact-text">Enter your contact:</label><br />
-          <input
-            type="text"
-            id="contact-text"
-            placeholder="eg. Your number or email"
-          />
-        </div>
+				<div>
+					<label for="contact-text">Enter your contact:</label><br />
+					<input
+						type="text"
+						id="contact-text"
+						placeholder="eg. Your number or email"
+					/>
+				</div>
 
-        <div>
-          <label for="where-text">Enter where the party will be:</label><br />
-          <input
-            type="text"
-            id="where-text"
-            placeholder="eg. 123 Smith Ave in the backyard"
-          />
-        </div>
+				<div>
+					<label for="where-text"
+						>Enter where the party will be:</label
+					><br />
+					<input
+						type="text"
+						id="where-text"
+						placeholder="eg. 123 Smith Ave in the backyard"
+					/>
+				</div>
 
-        <div>
-          <label for="when-text">Enter when the party will be starting:</label
-          ><br />
-          <input type="datetime-local" id="when-text" />
-        </div>
-        <br />
-      </div>
+				<div>
+					<label for="when-text"
+						>Enter when the party will be starting:</label
+					><br />
+					<input type="datetime-local" id="when-text" />
+				</div>
+				<br />
+			</div>
 
-      <div id="preview">
-        <canvas
-          id="preview-canvas"
-          width="400"
-          height="600"
-          style="border: 1px solid #000000"
-        ></canvas>
-      </div>
+			<div id="preview">
+				<canvas
+					id="preview-canvas"
+					width="400"
+					height="600"
+					style="border: 1px solid #000000"
+				></canvas>
+			</div>
 
-      <!-- image download button -->
-      <div>
-        <input type="button" id="downloadBtn" value="Download" />
-        <!-- <script>
+			<!-- image download button -->
+			<div>
+				<input type="button" id="downloadBtn" value="Download" />
+				<!-- <script>
             let download = document.getElementById('downloadBtn')
             download.addEventListener('click', downloadImage)
         </script> -->
-      </div>
-    </main>
-    <!-- image displays from this -->
-    <!-- <script src="scripts/onLoad.js" ></script> -->
-  </body>
+			</div>
+		</main>
+		<!-- image displays from this -->
+		<!-- <script src="scripts/onLoad.js" ></script> -->
+	</body>
 </html>
