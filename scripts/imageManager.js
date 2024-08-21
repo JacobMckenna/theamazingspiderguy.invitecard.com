@@ -11,26 +11,27 @@ let backgroundImages = {
 
 let textboxImages = {
 	// from textbox image name to image src link
-	Basic: "https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/invite_textbox.png",
+	Basic: "https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/basic_textbox.png",
+	Compact: "https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/compact_textbox.png",
 };
 let textboxPositions = {
 	// from textbox image name to xy positions for the important text
 	Basic: {
 		"name-text": {
-			x: 10,
-			y: 20,
+			x: 400,
+			y: 286,
 		},
 		"contact-text": {
-			x: 10,
-			y: 40,
+			x: 203,
+			y: 1049,
 		},
 		"where-text": {
-			x: 10,
-			y: 60,
+			x: 203,
+			y: 982,
 		},
 		"when-text": {
-			x: 10,
-			y: 80,
+			x: 203,
+			y: 907,
 		},
 	},
 };
@@ -55,10 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Functions
 	//
 	// Function to load and draw the selected image
-	function drawText(text, x, y) {
+	function drawText(text, x, y, font, align) {
 		// draw text to canvas
-		ctx.font = "bold 20px Arial";
+		ctx.font = font;
 		ctx.fillStyle = "rgb(0, 0, 0)";
+		ctx.textAlign = align;
 		ctx.fillText(text, x, y);
 	}
 	function loadImage(src) {
@@ -79,32 +81,34 @@ document.addEventListener("DOMContentLoaded", () => {
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 				ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height); // background image
-				ctx.drawImage(
-					textboxImage,
-					0,
-					0,
-					canvas.width,
-					canvas.height / 2
-				); // textbox image
+				ctx.drawImage(textboxImage, 0, 0, canvas.width, canvas.height); // textbox image
 				drawText(
 					nameText.value,
 					textboxPositions[textboxSelect.value]["name-text"]["x"],
-					textboxPositions[textboxSelect.value]["name-text"]["y"]
+					textboxPositions[textboxSelect.value]["name-text"]["y"],
+					"bold 36px Luckiest Guy",
+					"center"
 				); // for name text
 				drawText(
 					contactText.value,
 					textboxPositions[textboxSelect.value]["contact-text"]["x"],
-					textboxPositions[textboxSelect.value]["contact-text"]["y"]
+					textboxPositions[textboxSelect.value]["contact-text"]["y"],
+					"24px Luckiest Guy",
+					"left"
 				); // for contact text
 				drawText(
 					whereText.value,
 					textboxPositions[textboxSelect.value]["where-text"]["x"],
-					textboxPositions[textboxSelect.value]["where-text"]["y"]
+					textboxPositions[textboxSelect.value]["where-text"]["y"],
+					"24px Luckiest Guy",
+					"left"
 				); // for where text
 				drawText(
 					getWhenString(whenText.value),
 					textboxPositions[textboxSelect.value]["when-text"]["x"],
-					textboxPositions[textboxSelect.value]["when-text"]["y"]
+					textboxPositions[textboxSelect.value]["when-text"]["y"],
+					"24px Luckiest Guy",
+					"left"
 				); // for when text
 			})
 			.catch((error) => {
@@ -114,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	function getWhenString(value) {
 		// if value is less than 0, use empty string
 		if (value.length <= 0) {
-			return "None";
+			return "";
 		} // all else use toDateString
 		return new Date(value).toDateString(); // format eg: Tue Aug 20 2024
 	}
