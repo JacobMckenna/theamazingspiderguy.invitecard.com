@@ -71,6 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	const ctx = canvas.getContext("2d");
 	const downloadBtn = document.getElementById("downloadBtn");
 
+	const scale = 1.0;
+
+	canvas.width = canvas.width * scale;
+	canvas.height = canvas.height * scale;
+
 	//
 	// Functions
 	//
@@ -103,30 +108,30 @@ document.addEventListener("DOMContentLoaded", () => {
 				ctx.drawImage(textboxImage, 0, 0, canvas.width, canvas.height); // textbox image
 				drawText(
 					nameText.value,
-					textboxPositions[textboxSelect.value]["name-text"]["x"],
-					textboxPositions[textboxSelect.value]["name-text"]["y"],
-					"bold 36px Luckiest Guy",
+					textboxPositions[textboxSelect.value]["name-text"]["x"] * scale,
+					textboxPositions[textboxSelect.value]["name-text"]["y"] * scale,
+					`bold ${Math.floor(36 * scale)}px Luckiest Guy`,
 					"center"
 				); // for name text
 				drawText(
 					contactText.value,
-					textboxPositions[textboxSelect.value]["contact-text"]["x"],
-					textboxPositions[textboxSelect.value]["contact-text"]["y"],
-					"24px Luckiest Guy",
+					textboxPositions[textboxSelect.value]["contact-text"]["x"] * scale,
+					textboxPositions[textboxSelect.value]["contact-text"]["y"] * scale,
+					`${Math.floor(24 * scale)}px Luckiest Guy`,
 					"left"
 				); // for contact text
 				drawText(
 					whereText.value,
-					textboxPositions[textboxSelect.value]["where-text"]["x"],
-					textboxPositions[textboxSelect.value]["where-text"]["y"],
-					"24px Luckiest Guy",
+					textboxPositions[textboxSelect.value]["where-text"]["x"] * scale,
+					textboxPositions[textboxSelect.value]["where-text"]["y"] * scale,
+					`${Math.floor(24 * scale)}px Luckiest Guy`,
 					"left"
 				); // for where text
 				drawText(
 					getWhenString(whenText.value),
-					textboxPositions[textboxSelect.value]["when-text"]["x"],
-					textboxPositions[textboxSelect.value]["when-text"]["y"],
-					"24px Luckiest Guy",
+					textboxPositions[textboxSelect.value]["when-text"]["x"] * scale,
+					textboxPositions[textboxSelect.value]["when-text"]["y"] * scale,
+					`${Math.floor(24 * scale)}px Luckiest Guy`,
 					"left"
 				); // for when text
 			})
