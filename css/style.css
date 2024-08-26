@@ -1,0 +1,71 @@
+h1 {
+    color:blue;
+    outline-color: red;
+    outline: auto;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    text-rendering: auto;
+    padding:10px;
+    border: 4px outset;
+    text-decoration:underline;
+    text-shadow: 2px 2px red;
+    word-spacing: 2px;
+    
+}
+
+#inputs {
+    color: red;
+    border-color: black;
+    border-width: 10px;
+    border-style:inset;
+    padding:30px;
+    list-style: armenian;
+    place-items:stretch;
+    accent-color: red;
+    background-color: aqua;
+    background-clip: padding-box;
+    width: fit-content;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    margin-left: 20%;
+}
+
+.individual-input {
+    padding: 10px;
+}
+
+label {
+    padding: 10px;
+}
+
+input, select{
+    width: 100%;
+    border-color: red;
+    background-color: white;
+    padding:10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#preview {
+    float:right;
+    margin-top: 20px;
+    /* margin-right: 20px; */
+    margin-right: 20%;
+}
+
+#downloadBtn {
+    position:absolute;
+    margin-top: 50px;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-color: darkblue;
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:large;
+    letter-spacing: 2px;
+}
+
+#downloadBtn:hover {
+    background-color: rgb(0, 166, 255);
+    color:white;
+}

@@ -18,9 +18,18 @@
 				<h1>Spider-Man Birthday Invitation Card</h1>
 			</div>
 
+			<div id="preview">
+				<canvas
+					id="preview-canvas"
+					width="400"
+					height="600"
+					style="border: 1px solid #000000"
+				></canvas>
+			</div>
+
 			<!-- change background -->
 			<div id="inputs">
-				<div id="backgroundType">
+				<div id="backgroundType" class="individual-input">
 					<form>
 						<label for="backgroundType-select"
 							>Select your background:</label
@@ -36,7 +45,7 @@
 					</form>
 				</div>
 
-				<div id="textboxType">
+				<div id="textboxType" class="individual-input">
 					<form>
 						<label for="textbox-select">Select your textbox:</label
 						><br />
@@ -48,7 +57,7 @@
 					</form>
 				</div>
 
-				<div id="name">
+				<div id="name" class="individual-input">
 					<label for="name-text">Enter your name:</label><br />
 					<input
 						type="text"
@@ -57,7 +66,7 @@
 					/>
 				</div>
 
-				<div>
+				<div class="individual-input">
 					<label for="contact-text">Enter your contact:</label><br />
 					<input
 						type="text"
@@ -66,7 +75,7 @@
 					/>
 				</div>
 
-				<div>
+				<div class="individual-input">
 					<label for="where-text"
 						>Enter where the party will be:</label
 					><br />
@@ -77,7 +86,7 @@
 					/>
 				</div>
 
-				<div>
+				<div class="individual-input">
 					<label for="when-text"
 						>Enter when the party will be starting:</label
 					><br />
@@ -85,15 +94,7 @@
 				</div>
 				<br />
 			</div>
-
-			<div id="preview">
-				<canvas
-					id="preview-canvas"
-					width="400"
-					height="600"
-					style="border: 1px solid #000000"
-				></canvas>
-			</div>
+			<br />
 
 			<!-- image download button -->
 			<div>
