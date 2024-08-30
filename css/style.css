@@ -20,23 +20,6 @@ h1 {
     margin: 10 auto;
 }
 
-#inputs {
-    color: red;
-    border-color: black;
-    border-width: 10px;
-    border-style:inset;
-    padding:30px;
-    list-style: armenian;
-    place-items:stretch;
-    accent-color: red;
-    background-color: rgb(2, 150, 255);
-    background-clip: padding-box;
-    width: fit-content;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: large;
-    margin-left: 20%;
-}
-
 .individual-input {
     padding: 10px;
 }
@@ -53,8 +36,24 @@ input, select{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#inputs {
+    color: red;
+    border-color: black;
+    border-width: 10px;
+    border-style:inset;
+    padding:30px;
+    list-style: armenian;
+    place-items:stretch;
+    accent-color: red;
+    background-color: rgb(2, 150, 255);
+    background-clip: padding-box;
+    width: fit-content;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    margin-left: 20%;
+}
 #preview {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-right: 20%;
     position: relative;
     float: right;
