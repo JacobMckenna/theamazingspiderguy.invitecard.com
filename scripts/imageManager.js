@@ -15,42 +15,51 @@ let textboxImages = {
 	Compact:
 		"https://raw.githubusercontent.com/JacobMckenna/theamazingspiderguy.invitecard.com/main/images/compact_textbox.png",
 };
+
+
+IMG_WIDTH = 800
+IMG_HEIGHT = 1200
 let textboxPositions = {
 	// from textbox image name to xy positions for the important text
+
+	// uses pixel value location from image and converts that to a faction of the image size
+	// this is so that the text location will remain the same...
+	// (similar ot a percentage)
+	// across all potential sizes
 	Basic: {
 		"name-text": {
-			x: 400,
-			y: 286,
+			x: 400/IMG_WIDTH,
+			y: 300/IMG_HEIGHT,
 		},
 		"contact-text": {
-			x: 203,
-			y: 1049,
+			x: 203/IMG_WIDTH,
+			y: 1049/IMG_HEIGHT,
 		},
 		"where-text": {
-			x: 203,
-			y: 982,
+			x: 203/IMG_WIDTH,
+			y: 982/IMG_HEIGHT,
 		},
 		"when-text": {
-			x: 203,
-			y: 907,
+			x: 203/IMG_WIDTH,
+			y: 907/IMG_HEIGHT,
 		},
 	},
 	Compact: {
 		"name-text": {
-			x: 404,
-			y: 868,
+			x: 404/IMG_WIDTH,
+			y: 868/IMG_HEIGHT,
 		},
 		"contact-text": {
-			x: 291,
-			y: 1079,
+			x: 291/IMG_WIDTH,
+			y: 1079/IMG_HEIGHT,
 		},
 		"where-text": {
-			x: 320,
-			y: 911,
+			x: 320/IMG_WIDTH,
+			y: 911/IMG_HEIGHT,
 		},
 		"when-text": {
-			x: 287,
-			y: 993,
+			x: 287/IMG_WIDTH,
+			y: 993/IMG_HEIGHT,
 		},
 	},
 };
@@ -70,11 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	const canvas = document.getElementById("preview-canvas");
 	const ctx = canvas.getContext("2d");
 	const downloadBtn = document.getElementById("downloadBtn");
-
-	const scale = 1.0;
-
-	canvas.width = canvas.width * scale;
-	canvas.height = canvas.height * scale;
 
 	//
 	// Functions
@@ -108,30 +112,30 @@ document.addEventListener("DOMContentLoaded", () => {
 				ctx.drawImage(textboxImage, 0, 0, canvas.width, canvas.height); // textbox image
 				drawText(
 					nameText.value,
-					textboxPositions[textboxSelect.value]["name-text"]["x"] * scale,
-					textboxPositions[textboxSelect.value]["name-text"]["y"] * scale,
-					`bold ${Math.floor(36 * scale)}px Luckiest Guy`,
+					Math.floor(textboxPositions[textboxSelect.value]["name-text"]["x"] * canvas.width),
+					Math.floor(textboxPositions[textboxSelect.value]["name-text"]["y"] * canvas.height),
+					`bold ${Math.floor(40 * (canvas.width/IMG_WIDTH))}px Luckiest Guy`,
 					"center"
 				); // for name text
 				drawText(
 					contactText.value,
-					textboxPositions[textboxSelect.value]["contact-text"]["x"] * scale,
-					textboxPositions[textboxSelect.value]["contact-text"]["y"] * scale,
-					`${Math.floor(24 * scale)}px Luckiest Guy`,
+					Math.floor(textboxPositions[textboxSelect.value]["contact-text"]["x"] * canvas.width),
+					Math.floor(textboxPositions[textboxSelect.value]["contact-text"]["y"] * canvas.height),
+					`${Math.floor(24 * (canvas.width/IMG_WIDTH))}px Luckiest Guy`,
 					"left"
 				); // for contact text
 				drawText(
 					whereText.value,
-					textboxPositions[textboxSelect.value]["where-text"]["x"] * scale,
-					textboxPositions[textboxSelect.value]["where-text"]["y"] * scale,
-					`${Math.floor(24 * scale)}px Luckiest Guy`,
+					Math.floor(textboxPositions[textboxSelect.value]["where-text"]["x"] * canvas.width),
+					Math.floor(textboxPositions[textboxSelect.value]["where-text"]["y"] * canvas.height),
+					`${Math.floor(24 * (canvas.width/IMG_WIDTH))}px Luckiest Guy`,
 					"left"
 				); // for where text
 				drawText(
 					getWhenString(whenText.value),
-					textboxPositions[textboxSelect.value]["when-text"]["x"] * scale,
-					textboxPositions[textboxSelect.value]["when-text"]["y"] * scale,
-					`${Math.floor(24 * scale)}px Luckiest Guy`,
+					Math.floor(textboxPositions[textboxSelect.value]["when-text"]["x"] * canvas.width),
+					Math.floor(textboxPositions[textboxSelect.value]["when-text"]["y"] * canvas.height),
+					`${Math.floor(24 * (canvas.width/IMG_WIDTH))}px Luckiest Guy`,
 					"left"
 				); // for when text
 			})
