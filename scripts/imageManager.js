@@ -80,6 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	const ctx = canvas.getContext("2d");
 	const downloadBtn = document.getElementById("downloadBtn");
 
+	const previewElement = document.querySelector('#preview');
+	const previewContainer = document.querySelector('#previewContainer');
+	let isPreviewOpen = false;
+
 	//
 	// Functions
 	//
@@ -186,6 +190,32 @@ document.addEventListener("DOMContentLoaded", () => {
 		);
 	}
 
+	function showPreview() {
+        const previewElement = document.querySelector('#preview');
+        const previewContainer = document.querySelector('#previewContainer');
+        const previewCanvas = document.querySelector('#previewCanvas');
+        const originalCanvas = previewElement.querySelector('canvas');
+        
+        // Copy the canvas content to the preview canvas
+        const ctx = previewCanvas.getContext('2d');
+
+		newHeight = window.innerHeight - (window.innerHeight * 0.05)
+		// aspect ratio 4w x 6h
+		// w = h * (2/3)
+		newWidth = newHeight * (2/3)
+        previewCanvas.width = newWidth;
+    	previewCanvas.height = newHeight;
+        ctx.drawImage(originalCanvas, 0, 0, newWidth, newHeight);
+        
+        // Show the preview container
+        previewContainer.style.display = 'flex';
+    }
+	function hidePreview() {
+        const previewContainer = document.querySelector('#previewContainer');
+        // Hide the preview container
+        previewContainer.style.display = 'none';
+    }
+
 	//
 	// main
 	//
@@ -208,5 +238,19 @@ document.addEventListener("DOMContentLoaded", () => {
 	// start download when download button is clicked
 	downloadBtn.addEventListener("click", () => {
 		downloadImage();
+	});
+	// handle canvas preview clicks
+	previewElement.addEventListener('click', function() {
+		if (isPreviewOpen) {
+			hidePreview();
+			isPreviewOpen = false;
+		} else {
+			showPreview();
+			isPreviewOpen = true;
+		}
+	});
+	previewContainer.addEventListener('click', function() {
+		hidePreview();
+		isPreviewOpen = false;
 	});
 });
