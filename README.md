@@ -44,3 +44,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [Javascript Info](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - In-depth JavaScript tutorials and references for all levels.
 - [HTML Canvas Download](https://enjeck.com/blog/download-canvas-image/) - Guide on saving HTML Canvas content as an image.
 - [w3schools CSS](https://www.w3schools.com/css/) - A comprehensive resource for learning and referencing CSS properties and techniques.
+- [Learn Flexbox CSS in 8 minutes](https://youtu.be/phWxA89Dy94?si=In7qDutVudIomj2g) - A quick video tutorial on mastering Flexbox layout techniques.
