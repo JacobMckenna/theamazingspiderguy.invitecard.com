@@ -45,3 +45,15 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [HTML Canvas Download](https://enjeck.com/blog/download-canvas-image/) - Guide on saving HTML Canvas content as an image.
 - [w3schools CSS](https://www.w3schools.com/css/) - A comprehensive resource for learning and referencing CSS properties and techniques.
 - [Learn Flexbox CSS in 8 minutes](https://youtu.be/phWxA89Dy94?si=In7qDutVudIomj2g) - A quick video tutorial on mastering Flexbox layout techniques.
+
+## Upcoming Additions
+
+- [] automatic 's appened to the name
+  - [] account for case where name field is empty
+- [] add a background with all 3 characters
+- [] only images from amazingspiderguy
+- [] change enter name to enter 'birthday persons name'
+- [] change enter contact to enter 'your contact information'
+- [] select background as visible instead of as list
+- [] include check in time and end time for date
+- [] instead of download, open pdf in a new tab as a pdf

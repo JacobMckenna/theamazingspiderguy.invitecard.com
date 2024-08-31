@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	whenText.addEventListener("input", updateCanvas);
 	// start download when download button is clicked
 	downloadBtn.addEventListener("click", () => {
-		downloadImage();
+		// downloadImage();
 	});
 	// handle canvas preview clicks
 	previewElement.addEventListener('click', function() {
