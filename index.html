@@ -1,119 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- page header -->
-		<title>The Amazing Spider-Guy Birthday Invitation Card Creator</title>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Amazing Spider-Guy Birthday Invitation Card Creator</title>
 
-		<script src="scripts/imageManager.js"></script>
+    <!-- Custom CSS Links -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/preview.css">
+    <script src="scripts/imageManager.js" defer></script>
+	<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <style>
+        /* Apply the font to the body for consistency */
+        body {
+            font-family: 'Luckiest Guy', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Page Header -->
+        <header class="header-container">
+            <h1>Spider-Man Birthday Invitation Card</h1>
+        </header>
 
-		<!-- custom css file link -->
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/preview.css">
-	</head>
-	<body>
-		<main>
-			<!-- text on page -->
-			<div class="header-container">
-				<h1>Spider-Man Birthday Invitation Card</h1>
-			</div>
+        <!-- Invitation Preview Section -->
+        <section id="preview">
+            <canvas id="preview-canvas" width="400" height="600"></canvas>
+            <div id="previewText">Click to Enlarge</div>
+        </section>
 
-			<div id="preview">
-				<canvas
-					id="preview-canvas"
-					width="400"
-					height="600"
-					style="border: 1px solid #000000"
-				></canvas>
-				<div id="previewText">Click to Enlarge</div>
-			</div>
+        <!-- User Input Section -->
+        <section id="inputs">
+            <div class="input-group">
+                <label for="backgroundType-select">Select your background:</label>
+                <select id="backgroundType-select" aria-label="Background Type Selection">
+                    <option value="Spider-Man" selected>Spider-Man</option>
+                    <option value="Gwen">Gwen</option>
+                    <option value="Miles">Miles</option>
+                </select>
+            </div>
 
-			<!-- change background -->
-			<div id="inputs">
-				<div id="backgroundType" class="individual-input">
-					<form>
-						<label for="backgroundType-select"
-							>Select your background:</label
-						><br />
-						<select id="backgroundType-select">
-							<!-- sends values to a dictionary for the corresponding link in imageManager.js -->
-							<option value="Spider-Man" selected>
-								Spider-Man
-							</option>
-							<option value="Gwen">Gwen</option>
-							<option value="Miles">Miles</option>
-						</select>
-					</form>
-				</div>
+            <div class="input-group">
+                <label for="textbox-select">Select your textbox:</label>
+                <select id="textbox-select" aria-label="Textbox Type Selection">
+                    <option value="Basic" selected>Basic</option>
+                    <option value="Compact">Compact</option>
+                </select>
+            </div>
 
-				<div id="textboxType" class="individual-input">
-					<form>
-						<label for="textbox-select">Select your textbox:</label
-						><br />
-						<select id="textbox-select">
-							<!-- sends values to a dictionary for the corresponding link in imageManager.js -->
-							<option value="Basic" selected>Basic</option>
-							<option value="Compact">Compact</option>
-						</select>
-					</form>
-				</div>
+            <div class="input-group">
+                <label for="name-text">Enter your name:</label>
+                <input type="text" id="name-text" placeholder="e.g., Timothy" aria-label="Name Input" />
+            </div>
 
-				<div id="name" class="individual-input">
-					<label for="name-text">Enter your name:</label><br />
-					<input
-						type="text"
-						id="name-text"
-						placeholder="eg. Timothy"
-					/>
-				</div>
+            <div class="input-group">
+                <label for="contact-text">Enter your contact:</label>
+                <input type="text" id="contact-text" placeholder="e.g., Your number or email" aria-label="Contact Input" />
+            </div>
 
-				<div class="individual-input">
-					<label for="contact-text">Enter your contact:</label><br />
-					<input
-						type="text"
-						id="contact-text"
-						placeholder="eg. Your number or email"
-					/>
-				</div>
+            <div class="input-group">
+                <label for="where-text">Enter where the party will be:</label>
+                <input type="text" id="where-text" placeholder="e.g., 123 Smith Ave in the backyard" aria-label="Location Input" />
+            </div>
 
-				<div class="individual-input">
-					<label for="where-text"
-						>Enter where the party will be:</label
-					><br />
-					<input
-						type="text"
-						id="where-text"
-						placeholder="eg. 123 Smith Ave in the backyard"
-					/>
-				</div>
+            <div class="input-group">
+                <label for="when-text">Enter when the party will be starting:</label>
+                <input type="datetime-local" id="when-text" aria-label="Date and Time Input" />
+            </div>
+        </section>
 
-				<div class="individual-input">
-					<label for="when-text"
-						>Enter when the party will be starting:</label
-					><br />
-					<input type="datetime-local" id="when-text" />
-				</div>
-				<br />
-			</div>
-			<br />
+        <!-- Button Section -->
+        <section class="button-container">
+            <button id="downloadBtn">Download</button>
+            <a href="images/template_party_invite.pdf" target="_blank" aria-label="Download PDF Template">PDF File</a>
+        </section>
 
-			<!-- image download button -->
-			<div class="button-container">
-				<input type="button" id="downloadBtn" value="Download" />
-				<a href="images/template_party_invite.pdf" target="blank">PdfFile</a>
-				<!-- <script>
-            let download = document.getElementById('downloadBtn')
-            download.addEventListener('click', downloadImage)
-        </script> -->
-			</div>
-			<div id="previewContainer">
-				<div id="previewOverlay">
-					<canvas id="previewCanvas"></canvas>
-				</div>
-			</div>
-		</main>
-		<!-- image displays from this -->
-		<!-- <script src="scripts/onLoad.js" ></script> -->
-	</body>
+        <!-- Overlay and Canvas Preview -->
+        <div id="previewContainer">
+            <div id="previewOverlay">
+                <canvas id="previewCanvas"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts/onLoad.js" defer></script>
+</body>
 </html>
